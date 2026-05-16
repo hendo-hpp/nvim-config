@@ -1,5 +1,5 @@
 -- options.lua
--- 
+-- editor behaviour
 -- https://neovim.io/doc/user/options/
 
 local editor_options = {

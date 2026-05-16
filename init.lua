@@ -1,4 +1,12 @@
 -- hendo.hpp's nvim config
 
-require("config.keymaps")
-require("config.options")
+
+-- plug installation and plugin loading
+require('plugins.plugin_install')
+
+-- editor configurations
+require('config.keymaps')
+require('config.options')
+
+-- plugin configurations
+
