@@ -1,4 +1,5 @@
 -- plugin_install.lua
+-- checks for, and downloads vim-plug, and then loads plugins specified by user
 
 local uv = require('luv')
 
@@ -11,33 +12,33 @@ if plug_not_installed then
     print('installing vim-plug')
 
     vim.fn.system({
-    	'curl', '-fLo', plug_path, '--create-dirs',
-	'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    })    -- download vim-plug via curl and create directory structure
-
-    vim.opt.runtimepath:append(plug_path)     -- refresh runtime path
+        'curl', '-fLo', plug_path, '--create-dirs',
+    'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    })
 
     vim.api.nvim_create_autocmd('VimEnter', {
         callback = function()
-	    vim.cmd('PlugInstall --sync | source $MYVIMRC')
-	end
+        vim.cmd('PlugInstall --sync | source $MYVIMRC')
+    end
     })
 end
 
 local vim = vim
 local plug = vim.fn['plug#']
 
--- benchmark time for plugin loading
--- https://neovim.io/doc/user/luvref/#uv.hrtime()
 local start_time = uv.hrtime()
 
-vim.loader.enable()
-vim.call('plug#begin')
+vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
 
-plug('nvim-treesitter/nvim-treesitter')
+plug('mfussenegger/nvim-lint')
+plug('nvim-treesitter/nvim-treesitter', { ['branch'] = 'master', ['do'] = ':TSUpdate' })
 
 vim.call('plug#end')
 
+vim.loader.enable()
+
+require('plugins.treesitter')
+require('plugins.lint')
 
 local load_time = (uv.hrtime() - start_time) / 1e6
 print(string.format('plugin load time: %.4f ms', load_time))
