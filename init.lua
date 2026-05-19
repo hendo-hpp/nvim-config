@@ -6,5 +6,6 @@
 require('plugins.plugin_init')
 
 -- editor configurations
+require('config.autocmd')
 require('config.keymaps')
 require('config.options')

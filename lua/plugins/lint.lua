@@ -4,11 +4,11 @@
 
 require('lint').linters_by_ft = {
     --asm        = {''}
-    bash       = {'shellcheck'},
+    sh         = {'shellcheck'},
     c          = {'clangtidy'},
     cmake      = {'cmakelint'},
     cpp        = {'clangtidy'},
-    cuda       = {'clandtidy'},
+    cuda       = {'clangtidy'},
     glsl       = {'glslc'},
     haskell    = {'hlint'},
     java       = {'checkstyle'},
