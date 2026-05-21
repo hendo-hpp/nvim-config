@@ -1,8 +1,11 @@
 -- options.lua
--- editor behaviour
+-- configurations for editor behaviour
 -- https://neovim.io/doc/user/options/
 
-local editor_options = {
+
+
+-- global scope options
+local global_options = {
     autoindent = false,
 
     timeoutlen = 350,    -- time allocated for key map sequence
@@ -10,6 +13,18 @@ local editor_options = {
 
 }
 
-for key, value in pairs(editor_options) do
+for key, value in pairs(global_options) do
     vim.opt[key] = value
+end
+
+
+
+-- viewport scoped options
+local window_options = {
+    number = true,
+    relativenumber = true,
+}
+
+for key, value in pairs(window_options) do
+    vim.wo[key] = value
 end
