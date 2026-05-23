@@ -29,20 +29,22 @@ local visual_line_mode = 'x'
 -- buffers
 
 -- viewport
-set_keymap(normal_mode, '<leader>,', '<C-o>')       -- jump backward
-set_keymap(normal_mode, '<leader>.', '<C-i>')       -- jump forward
+set_keymap(normal_mode, '<leader>,', '<C-o>') -- jump backward
+set_keymap(normal_mode, '<leader>.', '<C-i>') -- jump forward
 
 -- file
-set_keymap(normal_mode, '<leader>w', ':w<CR>')      -- write
-set_keymap(normal_mode, '<leader>wq', ':wq<CR>')    -- write and exit
-set_keymap(normal_mode, '<leader>qq', ':q!<CR>')    -- force exit (no save)
+set_keymap(normal_mode, '<leader>w', ':w<CR>')   -- write
+set_keymap(normal_mode, '<leader>wq', ':wq<CR>') -- write and exit
+set_keymap(normal_mode, '<leader>qq', ':q!<CR>') -- force exit (no save)
 
-set_keymap(normal_mode, '<leader>y', '":+y')        -- copy selection
-set_keymap(normal_mode, '<leader>Y', ':%y+<CR>')    -- copy file 
+-- copy
+set_keymap({normal_mode, visual_mode}, '<leader>y', [["+y]]) -- selection
+set_keymap(normal_mode, '<leader>Y', [["+Y]])                -- line
+set_keymap(normal_mode, '<leader>yb', ':%y+<CR>')            -- buffer 
 
 
--- visual mode
-
+local theme_utils = require('config.themes')
+set_keymap(normal_mode, '<leader>th', theme_utils.cycle_themes)
 
 
 -- lsp keymaps
