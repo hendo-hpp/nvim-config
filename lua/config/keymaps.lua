@@ -18,7 +18,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 
--- keymap modes
+-- keymap mode aliases
 -- :help map-modes
 local normal_mode = 'n'
 local insert_mode = 'i'
@@ -28,7 +28,9 @@ local visual_line_mode = 'x'
 -- normal mode
 -- buffers
 
--- windows
+-- viewport
+set_keymap(normal_mode, '<leader>,', '<C-o>')       -- jump backward
+set_keymap(normal_mode, '<leader>.', '<C-i>')       -- jump forward
 
 -- file
 set_keymap(normal_mode, '<leader>w', ':w<CR>')      -- write
@@ -41,3 +43,17 @@ set_keymap(normal_mode, '<leader>Y', ':%y+<CR>')    -- copy file
 
 -- visual mode
 
+
+
+-- lsp keymaps
+local M = {}
+
+function M.set_lsp_keymaps(buf_num)
+    local lsp_opts = { buffer = buf_num, noremap = true, silent = true }
+    set_keymap(normal_mode, 'gd', vim.lsp.buf.definition, lsp_opts)          -- go to definition
+    set_keymap(normal_mode, 'K', vim.lsp.buf.hover, lsp_opts)                -- keyword lookup
+    set_keymap(normal_mode, '<leader>rn', vim.lsp.buf.rename, lsp_opts)      -- rename variable
+    set_keymap(normal_mode, '<leader>ca', vim.lsp.buf.code_action, lsp_opts) -- code action
+end
+
+return M

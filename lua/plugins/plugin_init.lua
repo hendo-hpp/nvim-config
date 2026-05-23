@@ -32,6 +32,7 @@ vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
 
 plug('mfussenegger/nvim-lint')
 plug('nvim-treesitter/nvim-treesitter', { ['branch'] = 'master', ['do'] = ':TSUpdate' })
+plug('neovim/nvim-lspconfig')
 
 vim.call('plug#end')
 
@@ -39,6 +40,7 @@ vim.loader.enable()
 
 require('plugins.treesitter')
 require('plugins.lint')
+require('plugins.lsp')
 
 local load_time = (uv.hrtime() - start_time) / 1e6
 print(string.format('plugin load time: %.4f ms', load_time))

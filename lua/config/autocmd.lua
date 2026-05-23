@@ -1,17 +1,29 @@
 -- autocmd.lua
 -- commands to be executed on specified events
 
--- event aliases
-local buffer_write = "BufWritePost"
-local buffer_enter = "BufEnter"
-local insert_mode_exit = "InsertLeave"
 
-
--- lint
-local lint_events = { buffer_write, buffer_enter, insert_mode_exit }
+--lint
+local lint_events = { 
+    'BufWritePost', 
+    'BufEnter',
+    'InsertLeave',
+}
 
 vim.api.nvim_create_autocmd(lint_events, {
     callback = function()
-        require("lint").try_lint()
+        require('lint').try_lint()
     end
+})
+
+
+-- lsp
+local lsp_events = {
+    'LspAttach',
+}
+
+vim.api.nvim_create_autocmd(lsp_events, {
+    callback = function(args)
+        local keymaps = require('config.keymaps')
+	keymaps.set_lsp_keymaps(args.buf)
+    end,
 })

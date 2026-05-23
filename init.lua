@@ -2,10 +2,10 @@
 -- hendo.hpp's nvim config
 
 
--- download plug and load plugins 
-require('plugins.plugin_init')
-
 -- editor configurations
 require('config.autocmd')
 require('config.keymaps')
 require('config.options')
+
+-- download plug and load plugins
+require('plugins.plugin_init')

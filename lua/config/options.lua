@@ -20,11 +20,11 @@ end
 
 
 -- viewport scoped options
-local window_options = {
+local viewport_options = {
     number = true,
     relativenumber = true,
 }
 
-for key, value in pairs(window_options) do
+for key, value in pairs(viewport_options) do
     vim.wo[key] = value
 end
