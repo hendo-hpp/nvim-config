@@ -27,3 +27,20 @@ vim.api.nvim_create_autocmd(lsp_events, {
 	keymaps.set_lsp_keymaps(args.buf)
     end,
 })
+
+
+-- file tree
+local function apply_folder_colors()
+    local orange = '#FFA657'
+    vim.api.nvim_set_hl(0, 'NvimTreeFolderName', { fg = orange })
+    vim.api.nvim_set_hl(0, 'NvimTreeOpenedFolderName', { fg = orange })
+    vim.api.nvim_set_hl(0, 'NvimTreeEmptyFolderName', { fg = orange })
+end
+
+
+apply_folder_colors()
+
+
+vim.api.nvim_create_autocmd('ColorScheme', {
+    callback = apply_folder_colors,
+})
