@@ -6,7 +6,5 @@ require('lint').linters_by_ft = {
     sh         = {'shellcheck'},
     cmake      = {'cmakelint'},
     haskell    = {'hlint'},
-    json       = {'jsonlint'},
     make       = {'checkmake'},
-    markdown   = {'vale'},
 }
