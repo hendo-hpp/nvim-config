@@ -15,4 +15,7 @@ local language_servers = {
     'lua_ls',        -- lua
 }
 
-vim.lsp.enable(language_servers)
+
+for _, server in ipairs(language_servers) do
+    vim.lsp.enable(server)
+end

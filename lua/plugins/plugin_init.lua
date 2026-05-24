@@ -43,6 +43,9 @@ plug('nvim-tree/nvim-web-devicons')
 plug('nvim-treesitter/nvim-treesitter', { ['branch'] = 'master', ['do'] = ':TSUpdate' })
 plug('nvim-tree/nvim-tree.lua')
 plug('romgrk/barbar.nvim')
+plug('ibhagwan/fzf-lua', { ['branch'] = 'main' }) 
+plug('lewis6991/gitsigns.nvim')
+plug('saghen/blink.cmp', { ['tag'] = 'v1.*' })
 
 
 vim.call('plug#end')
@@ -58,6 +61,9 @@ require('plugins.lualine')
 require('plugins.icons')
 require('plugins.filetree')
 require('plugins.tabline')
+require('plugins.fuzzyfinder')
+require('plugins.gitsigns')
+require('plugins.autocomplete')
 
 
 local load_time = (uv.hrtime() - start_time) / 1e6

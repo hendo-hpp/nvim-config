@@ -69,8 +69,17 @@ set_keymap(normal_mode, '<leader>th', theme_utils.cycle_themes)
 
 
 -- file tree
-set_keymap(normal_mode, '<leader>f', ':NvimTreeToggle<CR>')
+set_keymap(normal_mode, '<leader>t', ':NvimTreeToggle<CR>')
 
+
+-- fuzzy finder
+local fuzzy_find_files = function() require('fzf-lua').files() end
+local fuzzy_find_grep = function() require('fzf-lua').live_grep() end
+local fuzzy_find_buffers = function() require('fzf-lua').buffers() end
+
+set_keymap(normal_mode, '<leader>ff', fuzzy_find_files)   -- find project files
+set_keymap(normal_mode, '<leader>fg', fuzzy_find_grep)    -- grep text string
+set_keymap(normal_mode, '<leader>fb', fuzzy_find_buffers) -- find open buffers/tabs
 
 
 -- lsp keymaps
