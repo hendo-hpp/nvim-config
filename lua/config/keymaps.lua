@@ -34,6 +34,18 @@ set_keymap(normal_mode, '<leader>,', '<C-o>') -- jump backward
 set_keymap(normal_mode, '<leader>.', '<C-i>') -- jump forward
 
 
+-- window
+set_keymap(normal_mode, '<C-h>', '<C-w>h') -- jump left
+set_keymap(normal_mode, '<C-l>', '<C-w>l') -- jump right 
+set_keymap(normal_mode, '<C-j>', '<C-w>j') -- jump down
+set_keymap(normal_mode, '<C-k>', '<C-w>k') -- jump up
+
+set_keymap(normal_mode, '<A-Left>', ':vertical resize -2<CR>')  -- grow size leftwards
+set_keymap(normal_mode, '<A-right>', ':vertical resize +2<CR>') -- grow size rightwards
+set_keymap(normal_mode, '<A-Down>', ':resize +2<CR>')           -- grow size downwards
+set_keymap(normal_mode, '<A-Up>', ':resize size -2<CR>')        -- grow size upwards
+
+
 -- buffer
 set_keymap(normal_mode, '<leader>w', ':w<CR>')   -- write
 set_keymap(normal_mode, '<leader>wq', ':wq<CR>') -- write and exit
@@ -80,6 +92,14 @@ local fuzzy_find_buffers = function() require('fzf-lua').buffers() end
 set_keymap(normal_mode, '<leader>ff', fuzzy_find_files)   -- find project files
 set_keymap(normal_mode, '<leader>fg', fuzzy_find_grep)    -- grep text string
 set_keymap(normal_mode, '<leader>fb', fuzzy_find_buffers) -- find open buffers/tabs
+
+
+-- moving text
+set_keymap(visual_mode, '<', '<gv^') -- indent left 
+set_keymap(visual_mode, '>', '>gv^') -- indent right
+
+set_keymap(visual_mode, '<A-j>', ":m '>+1<CR>gv=gv") -- line down 
+set_keymap(visual_mode, '<A-k>', ":m '<-2<CR>gv=gv") -- line up
 
 
 -- lsp keymaps
