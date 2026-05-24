@@ -43,7 +43,7 @@ set_keymap(normal_mode, '<C-k>', '<C-w>k') -- jump up
 set_keymap(normal_mode, '<A-Left>', ':vertical resize -2<CR>')  -- grow size leftwards
 set_keymap(normal_mode, '<A-right>', ':vertical resize +2<CR>') -- grow size rightwards
 set_keymap(normal_mode, '<A-Down>', ':resize +2<CR>')           -- grow size downwards
-set_keymap(normal_mode, '<A-Up>', ':resize size -2<CR>')        -- grow size upwards
+set_keymap(normal_mode, '<A-Up>', ':resize -2<CR>')             -- grow size upwards
 
 
 -- buffer

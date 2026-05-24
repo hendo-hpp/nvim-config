@@ -17,23 +17,21 @@ local prog_languages = {
     'typescript',
 }
 
-local status, configs = pcall(require, 'nvim-treesitter.configs')
+
+local status, ts = pcall(require, 'nvim-treesitter')
 if not status then
-    print('Treesitter Error:' .. tostring(configs) .. '\n')
+    print('Treesitter Error:' .. tostring(ts) .. '\n')
     return
 end
 
-configs.setup({
-    ensure_installed = prog_languages,
-    sync_install = false,
-    auto_install = true,
 
-    highlight = {
-	enable = true, 
-	additional_vim_regex_highlighting = false,
-    },
-	    
-    indent = { 
-	enable = true 
-    },
+ts.install(prog_languages)
+
+
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = '*',
+    callback = function()
+        pcall(vim.treesitter.start)
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
 })

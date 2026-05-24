@@ -40,12 +40,13 @@ plug('mfussenegger/nvim-lint')
 plug('neovim/nvim-lspconfig')
 plug('nvim-lualine/lualine.nvim')
 plug('nvim-tree/nvim-web-devicons')
-plug('nvim-treesitter/nvim-treesitter', { ['branch'] = 'master', ['do'] = ':TSUpdate' })
+plug('nvim-treesitter/nvim-treesitter', { ['branch'] = 'main', ['do'] = ':TSUpdate' })
 plug('nvim-tree/nvim-tree.lua')
 plug('romgrk/barbar.nvim')
 plug('ibhagwan/fzf-lua', { ['branch'] = 'main' }) 
 plug('lewis6991/gitsigns.nvim')
 plug('saghen/blink.cmp', { ['tag'] = 'v1.*' })
+plug('MeanderingProgrammer/render-markdown.nvim')
 
 
 vim.call('plug#end')
@@ -64,6 +65,7 @@ require('plugins.tabline')
 require('plugins.fuzzyfinder')
 require('plugins.gitsigns')
 require('plugins.autocomplete')
+require('plugins.markdown') 
 
 
 local load_time = (uv.hrtime() - start_time) / 1e6
