@@ -9,6 +9,7 @@ local data_dir = vim.fn.stdpath('data')
 local plug_path = data_dir .. '/site/autoload/plug.vim'
 local plug_not_installed = (vim.fn.empty(vim.fn.glob(plug_path)) == 1)
 
+
 if plug_not_installed then
     print('installing vim-plug')
 
@@ -24,12 +25,16 @@ if plug_not_installed then
     })
 end
 
+
 local vim = vim
 local plug = vim.fn['plug#']
 
+
 local start_time = uv.hrtime()
 
+
 vim.call('plug#begin', vim.fn.stdpath('data') .. '/plugged')
+
 
 plug('mfussenegger/nvim-lint')
 plug('neovim/nvim-lspconfig')
@@ -37,10 +42,14 @@ plug('nvim-lualine/lualine.nvim')
 plug('nvim-tree/nvim-web-devicons')
 plug('nvim-treesitter/nvim-treesitter', { ['branch'] = 'master', ['do'] = ':TSUpdate' })
 plug('nvim-tree/nvim-tree.lua')
+plug('romgrk/barbar.nvim')
+
 
 vim.call('plug#end')
 
+
 vim.loader.enable()
+
 
 require('plugins.treesitter')
 require('plugins.lint')
@@ -48,6 +57,8 @@ require('plugins.lsp')
 require('plugins.lualine')
 require('plugins.icons')
 require('plugins.filetree')
+require('plugins.tabline')
+
 
 local load_time = (uv.hrtime() - start_time) / 1e6
 print(string.format('plugin load time: %.2f ms', load_time))
