@@ -11,10 +11,10 @@ end
 fzf_lua.setup({
     winopts = {
         height = 0.85,
-	width = 0.85,
-	preview = {
-	    horizontal = 'right:50%',
+	    width = 0.85,
+	    preview = {
+	        horizontal = 'right:50%',
             layout = 'flex',
-	},
+	    },
     },
 })

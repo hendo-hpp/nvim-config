@@ -1,4 +1,5 @@
 -- tabbar.lua
+-- visual display of opened buffers
 -- https://github.com/romgrk/barbar.nvim
 
 
@@ -18,16 +19,17 @@ barbar.setup({
     
     icons = {
         buffer_index = false,
-	buffer_number = false,
-	button = '',
-	inactive = { 
-	    button = '', 
-	},
-	seperator = {
-	    left = '|',
-	    right = '',
-	},
-	
+	    buffer_number = false,
+	    button = '',
+	    
+        inactive = { 
+	        button = '', 
+	    },
+
+	    seperator = {
+	        left = '|',
+	        right = '',
+	    },
     },
 
     exclude_ft = {

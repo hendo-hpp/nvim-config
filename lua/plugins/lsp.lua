@@ -1,6 +1,7 @@
 -- lsp.lua
---  
+-- languages supported for code analysis
 -- https://github.com/neovim/nvim-lspconfig
+
 
 local status, lspconfig = pcall(require, 'lspconfig')
 if not status then

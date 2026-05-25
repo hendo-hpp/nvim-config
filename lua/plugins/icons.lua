@@ -1,6 +1,7 @@
 -- icons.lua
 -- https://github.com/nvim-tree/nvim-web-devicons
 
+
 local status, devicons = pcall(require, 'nvim-web-devicons')
 if not status then
     return
@@ -33,6 +34,7 @@ local target_file_names = {
 }
 
 
+-- overrides to make file icons purple
 local ext_overrides = {}
 local file_overrides = {}
 

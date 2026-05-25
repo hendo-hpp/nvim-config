@@ -1,12 +1,16 @@
 -- theme.lua
 
+
 local theme_utils = {}
 
+
+-- themes installed/created by user
 theme_utils.themes = { 
     'ghdark',
---    'monochrome',
 }
 
+
+-- called on keymap <leader>th to switch between specified themes
 function theme_utils.cycle_themes()
     local current = vim.g.colors_name or 'default'
     local next_th = theme_utils.themes[1]
@@ -18,7 +22,9 @@ function theme_utils.cycle_themes()
 	    break
         end
     end
+
     pcall(vim.cmd, 'colorscheme ' .. next_th)
 end
+
 
 return theme_utils

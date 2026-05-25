@@ -49,7 +49,8 @@ set_keymap(normal_mode, '<A-Up>', ':resize -2<CR>')             -- grow size upw
 -- buffer
 set_keymap(normal_mode, '<leader>w', ':w<CR>')   -- write
 set_keymap(normal_mode, '<leader>wq', ':wq<CR>') -- write and exit
-set_keymap(normal_mode, '<leader>qq', ':q!<CR>') -- force exit (no save)
+set_keymap(normal_mode, '<leader>q', ':q<CR>')   -- quit
+set_keymap(normal_mode, '<leader>q1', ':q!<CR>') -- force exit (no save)
 
 
 -- tabline specific buffer
@@ -77,11 +78,11 @@ set_keymap(normal_mode, '<leader>yb', ':%y+<CR>')            -- buffer
 
 -- theme
 local theme_utils = require('config.themes')
-set_keymap(normal_mode, '<leader>th', theme_utils.cycle_themes)
+set_keymap(normal_mode, '<leader>th', theme_utils.cycle_themes) -- rotate between themes
 
 
 -- file tree
-set_keymap(normal_mode, '<leader>t', ':NvimTreeToggle<CR>')
+set_keymap(normal_mode, '<leader>t', ':NvimTreeToggle<CR>') -- open file explorer
 
 
 -- fuzzy finder
@@ -102,10 +103,15 @@ set_keymap(visual_mode, '<A-j>', ":m '>+1<CR>gv=gv") -- line down
 set_keymap(visual_mode, '<A-k>', ":m '<-2<CR>gv=gv") -- line up
 
 
--- lsp keymaps
-local M = {}
+-- git
+set_keymap(normal_mode, '<leader>gb', ':Gitsigns blame<CR>') -- show git blame of buffer
 
-function M.set_lsp_keymaps(buf_num)
+
+-- lsp
+local lsp_keymaps = {}
+
+
+function lsp_keymaps.set_lsp_keymaps(buf_num)
     local lsp_opts = { buffer = buf_num, noremap = true, silent = true }
     set_keymap(normal_mode, 'gd', vim.lsp.buf.definition, lsp_opts)          -- go to definition
     set_keymap(normal_mode, 'K', vim.lsp.buf.hover, lsp_opts)                -- keyword lookup
@@ -113,4 +119,5 @@ function M.set_lsp_keymaps(buf_num)
     set_keymap(normal_mode, '<leader>ca', vim.lsp.buf.code_action, lsp_opts) -- code action
 end
 
-return M
+
+return lsp_keymaps

@@ -1,6 +1,7 @@
 -- filetree.lua
 -- https://github.com/nvim-tree/nvim-tree.lua
 
+
 -- disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -16,10 +17,12 @@ nvim_tree.setup({
     sort = {
         sorter = 'case_sensitive',
     },
+    
     view = {
         width = 30,
         side = 'left',
     },
+
     renderer = {
         group_empty = true,
         icons = {
@@ -32,6 +35,7 @@ nvim_tree.setup({
             },
         },
     },
+    
     filters = {
         dotfiles = false,
     },

@@ -9,23 +9,33 @@ end
 
 
 blink.setup({
-    keymap = { preset = 'super-tab' },
-    signature = { enabled = true },
+    keymap = { 
+        preset = 'super-tab' -- tab selects the completion object
+    },
+
+    signature = { 
+        enabled = true -- show function arguments
+    },
+
     sources = {
-        default = { 'lsp', 'buffer' },
-	providers = {
+        default = { 
+            'lsp',   -- get suggestions from active lsp
+            --'buffer' -- get suggestions from all words in current buffer
+        },
+	    providers = {
             lsp = {
+                -- hide code snippet completion items
                 transform_items = function(_, items)
                     return vim.tbl_filter(function(item)
                         return item.kind ~= require('blink.cmp.types').CompletionItemKind.Snippet
                     end, items)
                 end,
-            },
+            }, 
         },
     },
 
     appearance = {
-        use_nvim_cmp_as_default = true,
-        nerd_font_variant = 'mono',
+        use_nvim_cmp_as_default = true, -- fallback incase treesitter highlighting fails
+        nerd_font_variant = 'mono',     -- consistent text width in completion window
     },
 })

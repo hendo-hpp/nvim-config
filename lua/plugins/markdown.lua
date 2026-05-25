@@ -8,12 +8,14 @@ if not status then
 end
 
 
+-- show prettified markdown in editor
 render_markdown.setup({
     heading = {
         enabled = true,
         sign = false,
         icons = { '󰲡 ', '󰲣 ', '󰲥 ', '󰲧 ', '󰲩 ', '󰲫 ' },
     },
+
     code = {
         enabled = true,
         style = 'full',
@@ -21,6 +23,7 @@ render_markdown.setup({
         right_pad = 4,
         highlight = 'NormalFloat',
     },
+    
     bullet = {
         enabled = true,
         icons = { '●', '○', '◆', '◇' },
